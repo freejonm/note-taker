@@ -14,5 +14,7 @@ app.use(express.json());
 // Routes
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/Develop/public/index.html')));
 
+app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, '/Develop/public/notes.html')));
+
 // Listener
 app.listen(PORT, () => console.log(`server listening on ${PORT}`))
