@@ -33,7 +33,7 @@ fs.readFile('db/db.json', 'utf8', (err, data)=>{
     });
 
     function writeNotes(){
-        fs.writeFile('db/db.json', JSON.stringify(notes,'/t'), err =>{
+        fs.writeFile('db/db.json', JSON.stringify(notes), err =>{
             if (err) throw err;
             return true
         })};
