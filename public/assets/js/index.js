@@ -51,19 +51,19 @@ const saveNote = (note) =>
 //     },
 //   });
 
-// const renderActiveNote = () => {
-//   hide(saveNoteBtn);
+const renderActiveNote = () => {
+  hide(saveNoteBtn);
 
-//   if (activeNote.id) {
-//     noteTitle.setAttribute('readonly', true);
-//     noteText.setAttribute('readonly', true);
-//     noteTitle.value = activeNote.title;
-//     noteText.value = activeNote.text;
-//   } else {
-//     noteTitle.value = '';
-//     noteText.value = '';
-//   }
-// };
+  if (activeNote.id) {
+    noteTitle.setAttribute('readonly', true);
+    noteText.setAttribute('readonly', true);
+    noteTitle.value = activeNote.title;
+    noteText.value = activeNote.text;
+  } else {
+    noteTitle.value = '';
+    noteText.value = '';
+  }
+};
 
 const handleNoteSave = () => {
   console.log("save button clicked!");
