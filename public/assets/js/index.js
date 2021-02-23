@@ -4,6 +4,7 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
+
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
@@ -42,27 +43,27 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
-const deleteNote = (id) =>
-  fetch(`/api/notes/${id}`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+// const deleteNote = (id) =>
+//   fetch(`/api/notes/${id}`, {
+//     method: 'DELETE',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//   });
 
-const renderActiveNote = () => {
-  hide(saveNoteBtn);
+// const renderActiveNote = () => {
+//   hide(saveNoteBtn);
 
-  if (activeNote.id) {
-    noteTitle.setAttribute('readonly', true);
-    noteText.setAttribute('readonly', true);
-    noteTitle.value = activeNote.title;
-    noteText.value = activeNote.text;
-  } else {
-    noteTitle.value = '';
-    noteText.value = '';
-  }
-};
+//   if (activeNote.id) {
+//     noteTitle.setAttribute('readonly', true);
+//     noteText.setAttribute('readonly', true);
+//     noteTitle.value = activeNote.title;
+//     noteText.value = activeNote.text;
+//   } else {
+//     noteTitle.value = '';
+//     noteText.value = '';
+//   }
+// };
 
 const handleNoteSave = () => {
   console.log("save button clicked!");
@@ -76,23 +77,23 @@ const handleNoteSave = () => {
   });
 };
 
-// Delete the clicked note
-const handleNoteDelete = (e) => {
-  // prevents the click listener for the list from being called when the button inside of it is clicked
-  e.stopPropagation();
+// // Delete the clicked note
+// const handleNoteDelete = (e) => {
+//   // prevents the click listener for the list from being called when the button inside of it is clicked
+//   e.stopPropagation();
 
-  const note = e.target;
-  const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
+//   const note = e.target;
+//   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
 
-  if (activeNote.id === noteId) {
-    activeNote = {};
-  }
+//   if (activeNote.id === noteId) {
+//     activeNote = {};
+//   }
 
-  deleteNote(noteId).then(() => {
-    getAndRenderNotes();
-    renderActiveNote();
-  });
-};
+//   deleteNote(noteId).then(() => {
+//     getAndRenderNotes();
+//     renderActiveNote();
+//   });
+// };
 
 // Sets the activeNote and displays it
 const handleNoteView = (e) => {
@@ -144,7 +145,7 @@ const renderNoteList = async (notes) => {
         'text-danger',
         'delete-note'
       );
-      delBtnEl.addEventListener('click', handleNoteDelete);
+      // delBtnEl.addEventListener('click', handleNoteDelete);
 
       liEl.append(delBtnEl);
     }
@@ -170,6 +171,7 @@ const renderNoteList = async (notes) => {
 
 // Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
+
 
 if (window.location.pathname === '/notes') {
   saveNoteBtn.addEventListener('click', handleNoteSave);

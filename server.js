@@ -24,12 +24,19 @@ fs.readFile('db/db.json', 'utf8', (err, data)=>{
     // routing db.json to /api/notes
     app.get('/api/notes', (req, res) => res.json(notes));
 
+    // route to add notes
     app.post('/api/notes', (req, res)=>{
         let newNote = req.body;
         notes.push(newNote);
-        
+        writeNotes();
         return res.json({});
-    })
+    });
+
+    function writeNotes(){
+        fs.writeFile('db/db.json', JSON.stringify(notes,'/t'), err =>{
+            if (err) throw err;
+            return true
+        })};
 })
 
 
@@ -37,6 +44,9 @@ fs.readFile('db/db.json', 'utf8', (err, data)=>{
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/public/index.html')));
 
 app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, '/public/notes.html')));
+
+
+    
 
 
 // Listener
