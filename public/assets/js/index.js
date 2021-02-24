@@ -161,6 +161,4 @@ if (window.location.pathname === '/notes') {
   newNoteBtn.addEventListener("click", clearFields);
 }
 
-
-
 getAndRenderNotes();
