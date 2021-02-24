@@ -77,24 +77,6 @@ const handleNoteSave = () => {
   });
 };
 
-// // Delete the clicked note
-// const handleNoteDelete = (e) => {
-//   // prevents the click listener for the list from being called when the button inside of it is clicked
-//   e.stopPropagation();
-
-//   const note = e.target;
-//   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
-
-//   if (activeNote.id === noteId) {
-//     activeNote = {};
-//   }
-
-//   deleteNote(noteId).then(() => {
-//     getAndRenderNotes();
-//     renderActiveNote();
-//   });
-// };
-
 // Sets the activeNote and displays it
 const handleNoteView = (e) => {
   e.preventDefault();
@@ -172,17 +154,20 @@ const renderNoteList = async (notes) => {
 // Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
+// Clears the input fields on new note click
+const clearFields = ()=>{
+  noteTitle.value="";
+  noteTextvalue="";
+}
 
 if (window.location.pathname === '/notes') {
   saveNoteBtn.addEventListener('click', handleNoteSave);
   newNoteBtn.addEventListener('click', handleNewNoteView);
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
   noteText.addEventListener('keyup', handleRenderSaveBtn);
+  newNoteBtn.addEventListener("click", clearFields);
 }
 
-newNoteBtn.addEventListener("click", function(){
-  noteTitle.value = "";
-  noteText.value = "";
-})
+
 
 getAndRenderNotes();
