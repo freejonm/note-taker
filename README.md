@@ -17,11 +17,11 @@ node server.js will start the server on a local host. The deployed app can be fo
 ## Usage
 Usage is pretty self-explanatory: click "Get Started" to see the notes page, where you can enter a title and text for your new note. 
 
-![](/assets/images/notetakermain.png)
+![](/public/assets/images/notetakermain.png)
 
 Once text appears in the textbox, a save button will appear. Clicking that will write the new note to the db.json file and render it in the column to the left. 
 
-![](/assets/images/notetakersave.png)
+![](/public/assets/images/notetakersave.png)
 
 ## Contributing
 Please email me for contribution instructions.
